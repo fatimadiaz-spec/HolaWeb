@@ -227,14 +227,15 @@ function mostrarProductos(filtrados) {
 	tabla1 += "</table>";
 	document.getElementById("control2").innerHTML = tabla1;
 }
-
 mostrarProductos(productos);
 
+document.getElementById("eje0").addEventListener("click", () => {
+  mostrarProductos(productos);
+});
 
 document.getElementById("eje1").addEventListener("click", () => {
   const filtrados = productos.filter(p => p.categoria=="ropa");
   mostrarProductos(filtrados);
-
 });
 
 document.getElementById("eje2").addEventListener("click", () => {
@@ -249,12 +250,16 @@ mostrarProductos(filtrados);
 
 });
 document.getElementById("eje4").addEventListener("click", () => {
-const filtrados = productos.filter(p => p.categoria!="muestraplancha");
+const filtrados = productos.filter(p => p.nombre=="plancha ropa");
 mostrarProductos(filtrados);
-
 });
 document.getElementById("eje5").addEventListener("click", () => {
-const filtrados = productos.filter(p => p.categoria!="categoria hogar");
+const filtrados = productos.filter(p => p.categoria=="hogar") &&
+productos.filter(p => p.precio > 743);
 mostrarProductos(filtrados);
-
+});
+document.getElementById("eje7").addEventListener("click", () => {
+const filtrados = productos.filter(p => p.precio <= 2000) &&
+productos.filter(p => p.precio >= 500);
+mostrarProductos(filtrados);
 });
